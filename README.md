@@ -1,4 +1,4 @@
-# SPacmanUSFX_MACG
+# SPacmanUSFX
 Choque Garcia Miguel Angel
 C.U.:111-314
 Correo electrónico: mickychog31@gmail.com 
