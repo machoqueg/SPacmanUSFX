@@ -40,7 +40,7 @@ public:
     void onRender();
     void onCleanup();
 
-    SDL_Surface* loadMediaToSurface(string _mediaFile);
+  /*  SDL_Surface* loadMediaToSurface(string _mediaFile);*/
 
     Pacman* pacman;
 

@@ -92,13 +92,13 @@ bool GameManager::onInit() {
 			//Get window surface
 			gScreenSurface = SDL_GetWindowSurface(gWindow);
 
-			if ((gPacManSurface = loadMediaToSurface("Resources/PacMan_01.bmp")) == NULL) {
-				return false;
-			}
-
-			/*if ((gPacManSurface = SDL_LoadBMP("Resources/PacMan_01.bmp")) == NULL) {
+			/*if ((gPacManSurface = loadMediaToSurface("Resources/PacMan_01.bmp")) == NULL) {
 				return false;
 			}*/
+
+			if ((gPacManSurface = SDL_LoadBMP("Resources/PacMan_01.bmp")) == NULL) {
+				return false;
+			}
 		
 		}
 	}
@@ -121,20 +121,20 @@ void GameManager::onCleanup() {
 	SDL_FreeSurface(gPacManSurface);
 	SDL_Quit();
 };
-
-SDL_Surface* GameManager::loadMediaToSurface(string _mediaFile){
-	SDL_Surface* Surf_Temp = nullptr;
-	//SDL_Surface* Surf_Return = NULL;
-
-	if ((Surf_Temp = SDL_LoadBMP(_mediaFile.c_str())) == nullptr) {
-		return nullptr;
-	}
-
-	/*Surf_Return = SDL_DisplayFormat(Surf_Temp);
-	SDL_FreeSurface(Surf_Temp);
-
-	return Surf_Return;*/
-	return Surf_Temp;
-};
+//
+//SDL_Surface* GameManager::loadMediaToSurface(string _mediaFile){
+//	SDL_Surface* Surf_Temp = nullptr;
+//	//SDL_Surface* Surf_Return = NULL;
+//
+//	if ((Surf_Temp = SDL_LoadBMP(_mediaFile.c_str())) == nullptr) {
+//		return nullptr;
+//	}
+//
+//	/*Surf_Return = SDL_DisplayFormat(Surf_Temp);
+//	SDL_FreeSurface(Surf_Temp);
+//
+//	return Surf_Return;*/
+//	return Surf_Temp;
+//};
 
 
