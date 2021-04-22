@@ -129,13 +129,16 @@
   <ItemGroup>
     <ClCompile Include="Fantasma.cpp" />
     <ClCompile Include="Fruta.cpp" />
-    <ClCompile Include="main_basico.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Pacman.cpp" />
     <ClCompile Include="Textura.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fantasma.h" />
     <ClInclude Include="Fruta.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="Movimientos.h" />
     <ClInclude Include="Pacman.h" />
     <ClInclude Include="Textura.h" />
