@@ -4,7 +4,7 @@
 Pacman::Pacman()
 {
 	//Initialize the offsets
-	posicion = { 0, 0 };
+	posicion = {0, 0};
 	velocidad = { 0, 0 };
 }
 
@@ -96,4 +96,5 @@ void Pacman::render()
 
 	//Render to screen
 	SDL_RenderCopyEx(renderer, newTexture, clip, &renderQuad, angle, center, flip);
-}	
+}
+

@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include <iostream>
 #include <string>
 #include <SDL.h>
@@ -15,34 +14,36 @@ const int SCREEN_HEIGHT = 480;
 class GameManager
 {
 private:
-	bool juego_en_ejecucion;
+    bool juego_en_ejecucion;
 
-	//The window we'll be rendering to
-	SDL_Window* gWindow;
+    //The window we'll be rendering to
+    SDL_Window* gWindow;
 
-	//The window renderer
-	SDL_Renderer* gRenderer;
+    //The window renderer
+    SDL_Renderer* gRenderer;
 
-	//The surface contained by the window
-	SDL_Surface* gScreenSurface;
+    //The surface contained by the window
+    SDL_Surface* gScreenSurface;
 
-	//The images we will load and show on the screen
-	SDL_Surface* gPacManSurface;
-	SDL_Surface* gFantasmaSurface;
+    //The images we will load and show on the screen
+    SDL_Surface* gPacManSurface;
+    SDL_Surface* gFantasmaSurface;
 
 public:
-	GameManager();
-	int onExecute();
+    GameManager();
+    int onExecute();
+    
+    bool onInit();
 
-	bool onInit();
+    void onEvent(SDL_Event* Event);
+    void onLoop();
+    void onRender();
+    void onCleanup();
 
-	void onEvent(SDL_Event* Event);
-	void onLoop();
-	void onRender();
-	void onCleanup();
+    SDL_Surface* loadMediaToSurface(string _mediaFile);
 
-	SDL_Surface* loadMediaToSurface(string _mediaFile);
+    Pacman* pacman;
 
-	Pacman* pacman;
+};
 
-}; class GameManager
+    

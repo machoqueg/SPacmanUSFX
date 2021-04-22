@@ -14,22 +14,22 @@ GameManager::GameManager() {
 }
 
 int GameManager::onExecute() {
-	if (onInit() == false) {
-		return -1;
-	}
+    if (onInit() == false) {
+        return -1;
+    }
 
 	pacman->window = gWindow;
 	pacman->renderer = gRenderer;
 	pacman->screenSurface = gScreenSurface;
 	pacman->pacmanSurface = gPacManSurface;
 
-	SDL_Event Event;
+    SDL_Event Event;
 
-	while (juego_en_ejecucion) {
-		while (SDL_PollEvent(&Event)) {
-			onEvent(&Event);
+    while (juego_en_ejecucion) {
+        while (SDL_PollEvent(&Event)) {
+            onEvent(&Event);
 			pacman->handleEvent(Event);
-		}
+        }
 		//Move the dot
 		pacman->move();
 
@@ -41,20 +41,20 @@ int GameManager::onExecute() {
 		//pacman->render();
 
 		//Update screen
-
-		onLoop();
-		onRender();
+		
+        onLoop();
+        onRender();
 		SDL_RenderPresent(gRenderer);
 
-	}
+    }
 
-	onCleanup();
+    onCleanup();
 
-	return 0;
+    return 0;
 }
 
-bool GameManager::onInit() {
-	//Initialization flag
+bool GameManager::onInit() { 
+    //Initialization flag
 	bool success = true;
 
 	//Initialize SDL
@@ -74,7 +74,7 @@ bool GameManager::onInit() {
 		}
 		else
 		{
-
+			
 			//Create vsynced renderer for window
 			gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 			if (gRenderer == NULL)
@@ -87,8 +87,8 @@ bool GameManager::onInit() {
 				//Initialize renderer color
 				SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 			}
-
-
+			
+			
 			//Get window surface
 			gScreenSurface = SDL_GetWindowSurface(gWindow);
 
@@ -99,7 +99,7 @@ bool GameManager::onInit() {
 			/*if ((gPacManSurface = SDL_LoadBMP("Resources/PacMan_01.bmp")) == NULL) {
 				return false;
 			}*/
-
+		
 		}
 	}
 
@@ -122,7 +122,7 @@ void GameManager::onCleanup() {
 	SDL_Quit();
 };
 
-SDL_Surface* GameManager::loadMediaToSurface(string _mediaFile) {
+SDL_Surface* GameManager::loadMediaToSurface(string _mediaFile){
 	SDL_Surface* Surf_Temp = nullptr;
 	//SDL_Surface* Surf_Return = NULL;
 
@@ -132,6 +132,9 @@ SDL_Surface* GameManager::loadMediaToSurface(string _mediaFile) {
 
 	/*Surf_Return = SDL_DisplayFormat(Surf_Temp);
 	SDL_FreeSurface(Surf_Temp);
+
 	return Surf_Return;*/
 	return Surf_Temp;
 };
+
+

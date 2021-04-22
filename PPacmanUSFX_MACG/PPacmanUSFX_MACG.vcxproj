@@ -138,7 +138,6 @@
     <ClInclude Include="Fantasma.h" />
     <ClInclude Include="Fruta.h" />
     <ClInclude Include="GameManager.h" />
-    <ClInclude Include="main.h" />
     <ClInclude Include="Movimientos.h" />
     <ClInclude Include="Pacman.h" />
     <ClInclude Include="Textura.h" />

@@ -50,9 +50,6 @@
     <ClInclude Include="Textura.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
