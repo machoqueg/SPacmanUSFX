@@ -8,15 +8,19 @@ GameManager::GameManager() {
 	gScreenSurface = nullptr;
 	gPacManSurface = nullptr;
 	gFantasmaSurface = nullptr;
+	gFrutaSurface = nullptr;
 
 	juego_en_ejecucion = true;
 	pacman = new Pacman();
+	fruta = new Fruta();
 }
 
 int GameManager::onExecute() {
     if (onInit() == false) {
         return -1;
     }
+
+	srand(time(NULL));
 
 	pacman->window = gWindow;
 	pacman->renderer = gRenderer;
@@ -28,6 +32,11 @@ int GameManager::onExecute() {
 	fantasma.renderer = gRenderer;
 	fantasma.screenSurface = gScreenSurface;
 	fantasma.fantasmaSurface = gFantasmaSurface;
+
+	fruta->window = gWindow;
+	fruta->renderer = gRenderer;
+	fruta->screenSurface = gScreenSurface;
+	fruta->frutaSurface = gFrutaSurface;
 
     SDL_Event Event;
 
@@ -42,6 +51,9 @@ int GameManager::onExecute() {
 
 		// Mover Fantasma
 		fantasma.move();
+		
+		// Mover Fruta
+		fruta->mostrar();
 
 		//Clear screen
 		SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -112,6 +124,9 @@ bool GameManager::onInit() {
 			if ((gFantasmaSurface = SDL_LoadBMP("Resources/Fantasma.bmp")) == NULL) {
 				return false;
 			}
+			if ((gFrutaSurface = SDL_LoadBMP("Resources/Fruta01.bmp")) == NULL) {
+				return false;
+			}
 		}
 	}
 
@@ -127,27 +142,15 @@ void GameManager::onLoop() {};
 void GameManager::onRender() {
 	pacman->render();
 	fantasma.render();
+	fruta->render();
 };
 
 void GameManager::onCleanup() {
 	SDL_FreeSurface(gScreenSurface);
 	SDL_FreeSurface(gPacManSurface);
+	SDL_FreeSurface(gFantasmaSurface);
+	SDL_FreeSurface(gFrutaSurface);
+
 	SDL_Quit();
 };
-//
-//SDL_Surface* GameManager::loadMediaToSurface(string _mediaFile){
-//	SDL_Surface* Surf_Temp = nullptr;
-//	//SDL_Surface* Surf_Return = NULL;
-//
-//	if ((Surf_Temp = SDL_LoadBMP(_mediaFile.c_str())) == nullptr) {
-//		return nullptr;
-//	}
-//
-//	/*Surf_Return = SDL_DisplayFormat(Surf_Temp);
-//	SDL_FreeSurface(Surf_Temp);
-//
-//	return Surf_Return;*/
-//	return Surf_Temp;
-//};
-
 

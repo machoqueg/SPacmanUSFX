@@ -1,9 +1,14 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <time.h>
+
 #include <SDL.h>
+
 #include "Pacman.h"
 #include "Fantasma.h"
+#include "Fruta.h"
 
 using namespace std;
 
@@ -29,6 +34,7 @@ private:
     //The images we will load and show on the screen
     SDL_Surface* gPacManSurface;
     SDL_Surface* gFantasmaSurface;
+	SDL_Surface* gFrutaSurface;
 
 public:
     GameManager();
@@ -45,6 +51,7 @@ public:
 
     Pacman* pacman;
 	Fantasma fantasma;
+	Fruta* fruta;
 
 };
 
