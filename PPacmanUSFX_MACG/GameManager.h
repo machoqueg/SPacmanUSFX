@@ -3,6 +3,7 @@
 #include <string>
 #include <SDL.h>
 #include "Pacman.h"
+#include "Fantasma.h"
 
 using namespace std;
 
@@ -43,6 +44,7 @@ public:
   /*  SDL_Surface* loadMediaToSurface(string _mediaFile);*/
 
     Pacman* pacman;
+	Fantasma fantasma;
 
 };
 

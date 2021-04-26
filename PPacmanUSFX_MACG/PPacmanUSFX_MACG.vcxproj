@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\vclib\SDL2_ttf-2.0.15\include;C:\vclib\SDL2_mixer-2.0.4\include;C:\vclib\SDL2_image-2.0.5\include;C:\vclib\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\vclib\SDL2_ttf-2.0.15\lib\x64;C:\vclib\SDL2_mixer-2.0.4\lib\x64;C:\vclib\SDL2_image-2.0.5\lib\x64;C:\vclib\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\vclibs\SDL2_ttf\include;C:\vclibs\SDL2_mixer\include;C:\vclibs\SDL2_image\include;C:\vclibs\SDL2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\vclibs\SDL2_ttf\lib\x64;C:\vclibs\SDL2_mixer\lib\x64;C:\vclibs\SDL2_image\lib\x64;C:\vclibs\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="26_motion.cpp" />
     <ClCompile Include="Fantasma.cpp" />
     <ClCompile Include="Fruta.cpp" />
     <ClCompile Include="GameManager.cpp" />
