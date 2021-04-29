@@ -77,6 +77,23 @@ Pacman::Pacman(SDL_Window* _window, SDL_Renderer* _renderer, SDL_Surface* _scree
 	screenSurface = _screenSurface;
 	pacmanSurface = _pacmanSurface;
 }
+Pacman::Pacman(SDL_Window* _window, SDL_Renderer* _renderer, SDL_Surface* _screenSurface, SDL_Texture* _pacmanTexture, int _posicionX, int _posicionY, int _anchoPantalla, int _altoPantalla, int _velocidadPatron)
+{
+	// Inicializa propiedade de de pacman
+	posicionX = _posicionX;
+	posicionY = _posicionY;
+	velocidadX = 0;
+	velocidadY = 0;
+	velocidadPatron = _velocidadPatron;
+	ancho = 25;
+	alto = 25;
+	anchoPantalla = _anchoPantalla;
+	altoPantalla = _altoPantalla;
+	window = _window;
+	renderer = _renderer;
+	screenSurface = _screenSurface;
+	pacmanTexture = _pacmanTexture;
+}
 
 
 void Pacman::handleEvent(SDL_Event& e)
@@ -137,19 +154,19 @@ void Pacman::render()
 	//Color key image
 	//SDL_SetColorKey(screenSurface, SDL_TRUE, SDL_MapRGB(pacmanSurface->format, 0, 0xFF, 0xFF));
 
-	SDL_Texture* newTexture = nullptr;
+	//SDL_Texture* newTexture = nullptr;
 
-	newTexture = SDL_CreateTextureFromSurface(renderer, pacmanSurface);
-	if (newTexture == NULL)
-	{
-		cout << "No se puede crear la textura a partir de la superficie, SDL Error: " << SDL_GetError() << endl;
-	}
-	else
-	{
+	//newTexture = SDL_CreateTextureFromSurface(renderer, pacmanSurface);
+	//if (newTexture == NULL)
+	//{
+	//	cout << "No se puede crear la textura a partir de la superficie, SDL Error: " << SDL_GetError() << endl;
+	//}
+	//else
+	//{
 		//Obtener dimensiones de la imagen
-		ancho = pacmanSurface->w;
-		alto = pacmanSurface->h;
-	}
+	//	ancho = pacmanSurface->w;
+	//	alto = pacmanSurface->h;
+	//}
 	//SDL_Rect* clip = NULL;
 	//double angle = 0.0;
 	//SDL_Point* center = NULL;
@@ -165,6 +182,6 @@ void Pacman::render()
 	}
 */
 	//Render to screen
-	SDL_RenderCopyEx(renderer, newTexture, NULL, &renderQuad, 0.0, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, pacmanTexture, NULL, &renderQuad, 0.0, NULL, SDL_FLIP_NONE);
 }
 

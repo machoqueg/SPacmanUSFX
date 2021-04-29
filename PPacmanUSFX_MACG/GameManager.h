@@ -5,6 +5,7 @@
 #include <time.h>
 
 #include <SDL.h>
+#include <SDL_image.h>
 
 #include "Pacman.h"
 #include "Fantasma.h"
@@ -32,10 +33,14 @@ private:
     SDL_Surface* gScreenSurface;
 
     //The images we will load and show on the screen
-    SDL_Surface* gPacManSurface;
+	//SDL_Surface* gPacManSurface;
+	SDL_Texture* gPacmanTexture;
     SDL_Surface* gFantasmaSurface;
 	SDL_Surface* gFrutaSurface;
-
+public:
+	Pacman* pacman;
+	Fantasma fantasma;
+	Fruta* fruta;
 public:
     GameManager();
     int onExecute();
@@ -46,12 +51,7 @@ public:
     void onLoop();
     void onRender();
     void onCleanup();
-
-  /*  SDL_Surface* loadMediaToSurface(string _mediaFile);*/
-
-    Pacman* pacman;
-	Fantasma fantasma;
-	Fruta* fruta;
+	SDL_Texture* loadTexture(string path);   
 
 };
 

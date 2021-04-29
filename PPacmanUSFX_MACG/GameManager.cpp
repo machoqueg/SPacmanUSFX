@@ -6,7 +6,8 @@ GameManager::GameManager() {
 	gWindow = nullptr;
 	gRenderer = nullptr;
 	gScreenSurface = nullptr;
-	gPacManSurface = nullptr;
+	//gPacManSurface = nullptr;
+	gPacmanTexture = nullptr;
 	gFantasmaSurface = nullptr;
 	gFrutaSurface = nullptr;
 
@@ -21,8 +22,9 @@ int GameManager::onExecute() {
         return -1;
     }
 
-	//pacman = new Pacman(gWindow, gRenderer, gScreenSurface, gPacManSurface);
-	pacman = new Pacman(gWindow, gRenderer, gScreenSurface, gPacManSurface, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT, 5);
+	// pacman = new Pacman(gWindow, gRenderer, gScreenSurface, gPacManSurface);
+	//pacman = new Pacman(gWindow, gRenderer, gScreenSurface, gPacManSurface, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT, 5);
+	pacman = new Pacman(gWindow, gRenderer, gScreenSurface, gPacmanTexture, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT, 5);
 
 	srand(time(NULL));
 
@@ -122,9 +124,17 @@ bool GameManager::onInit() {
 				return false;
 			}*/
 
-			if ((gPacManSurface = SDL_LoadBMP("Resources/PacMan_01.bmp")) == NULL) {
+			/*if ((gPacManSurface = SDL_LoadBMP("Resources/PacMan_01.bmp")) == NULL) {
 				return false;
+			}*/
+			
+			gPacmanTexture = loadTexture("Resources/PacMan_01.bmp");
+			if (gPacmanTexture == NULL)
+			{
+				cout << "Fallo en la carga de la textura" << endl;
+				success = false;
 			}
+
 			if ((gFantasmaSurface = SDL_LoadBMP("Resources/Fantasma.bmp")) == NULL) {
 				return false;
 			}
@@ -151,10 +161,36 @@ void GameManager::onRender() {
 
 void GameManager::onCleanup() {
 	SDL_FreeSurface(gScreenSurface);
-	SDL_FreeSurface(gPacManSurface);
+	//SDL_FreeSurface(gPacManSurface);
 	SDL_FreeSurface(gFantasmaSurface);
 	SDL_FreeSurface(gFrutaSurface);
 
 	SDL_Quit();
 };
 
+SDL_Texture* GameManager::loadTexture(string path)
+{
+	// Textura final generada
+	SDL_Texture* newTexture = nullptr;
+
+	// Carga una imagen de una ruta especifica
+	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
+	if (loadedSurface == NULL)
+	{
+		cout << "No se pudo cargarla imagen, SDL_image Error: " << IMG_GetError() << endl;
+	}
+	else
+	{
+		// Crea una textura a partir de una superficie de pixeles
+		newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
+		if (newTexture == NULL)
+		{
+			cout << "No se pudo crear la textura, SDL Error: " << SDL_GetError() << endl;
+		}
+
+		// Libera la superficie cargada
+		SDL_FreeSurface(loadedSurface);
+	}
+
+	return newTexture;
+}
