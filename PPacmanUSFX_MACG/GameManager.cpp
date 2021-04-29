@@ -11,7 +11,8 @@ GameManager::GameManager() {
 	gFrutaSurface = nullptr;
 
 	juego_en_ejecucion = true;
-	pacman = new Pacman();
+	//pacman = new Pacman(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT, 5);
+
 	fruta = new Fruta();
 }
 
@@ -20,12 +21,15 @@ int GameManager::onExecute() {
         return -1;
     }
 
+	//pacman = new Pacman(gWindow, gRenderer, gScreenSurface, gPacManSurface);
+	pacman = new Pacman(gWindow, gRenderer, gScreenSurface, gPacManSurface, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT, 5);
+
 	srand(time(NULL));
 
-	pacman->window = gWindow;
+	/*pacman->window = gWindow;
 	pacman->renderer = gRenderer;
 	pacman->screenSurface = gScreenSurface;
-	pacman->pacmanSurface = gPacManSurface;
+	pacman->pacmanSurface = gPacManSurface;*/
 
 
 	fantasma.window = gWindow;
