@@ -23,7 +23,12 @@ private:
 	int anchoPantalla;
 	int altoPantalla;
 
-public:
+	int posicionXDestino;
+	int posicionYDestino;
+
+	int incrementoPosicionX;
+	int incrementoPosicionY;
+
 	// Ventana en la que se realizara el tratamiento grafico de renderizacion
 	SDL_Window* window = nullptr;
 
@@ -36,9 +41,16 @@ public:
 	// Supeerficie grafica del fantasma;
 	SDL_Surface* fantasmaSurface = nullptr;
 
+
+	// Textura de la grafica del fantasma
+	SDL_Texture* fantasmaTexture = nullptr;
+
+
 public:
 	//Constructores y destructores
 	Fantasma();
+	Fantasma(int _posicionX, int _posicionY, int _anchoPantalla, int _altoPantalla, int _velocidadPatron);
+	Fantasma(SDL_Window* _window, SDL_Renderer* _renderer, SDL_Surface* _screenSurface, SDL_Texture* _fantasmaTexture, int _posicionX, int _posicionY, int _anchoPantalla, int _altoPantalla, int _velocidadPatron);
 	//~Fantasma();
 
 	//Metodos accesores
