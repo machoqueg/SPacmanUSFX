@@ -26,7 +26,7 @@ int GameManager::onExecute() {
 	
 	//fantasma = new Fantasma();
 	//fantasma = new Fantasma(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, SCREEN_WIDTH, SCREEN_HEIGHT, 7);
-	fantasma = new Fantasma(gWindow, gRenderer, gScreenSurface, gFantasmaTexture, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 5);
+	fantasma = new Fantasma(gRenderer, gFantasmaTexture, 0, 0, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT, 5);
 	fruta = new Fruta(gWindow, gRenderer, gScreenSurface, gFrutasTextures, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 	srand(time(NULL));

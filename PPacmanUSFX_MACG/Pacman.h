@@ -33,16 +33,8 @@ private:
 
 
 public:
-	// Ventana en la que se realizara el tratamiento grafico de renderizacion
-	SDL_Window* window = nullptr;
 	// Renderizador de la ventana
 	SDL_Renderer* renderer = nullptr;
-
-	// La superficie grafica (surface) que contiene la ventana
-	SDL_Surface* screenSurface = nullptr;
-
-	// Supeerficie grafica de pacman;
-	SDL_Surface* pacmanSurface = nullptr;
 
 	// Textura grafica de pacman;
 	SDL_Texture* pacmanTexture = nullptr;

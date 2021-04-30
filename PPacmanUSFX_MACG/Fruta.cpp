@@ -38,9 +38,7 @@ Fruta::Fruta(SDL_Window* _window, SDL_Renderer* _renderer, SDL_Surface* _screenS
 	contadorTiempoVisible = 0;
 	contadorTiempoNoVisible = 0;
 
-	window = _window;
 	renderer = _renderer;
-	screenSurface = _screenSurface;
 	frutasTextures[0] = _frutasTextures[0];
 	frutasTextures[1] = _frutasTextures[1];
 	frutasTextures[2] = _frutasTextures[2];

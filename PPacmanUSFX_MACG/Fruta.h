@@ -32,14 +32,8 @@ private:
 	int contadorTiempoNoVisible;
 
 public:
-	// Ventana en la que se realizara el tratamiento grafico de renderizacion
-	SDL_Window* window = nullptr;
-
 	//Renderizador de la ventana
 	SDL_Renderer* renderer = nullptr;
-
-	// La superficie grafica (surface) que contiene la ventana
-	SDL_Surface* screenSurface = nullptr;
 
 	// Array de las texturas de las diferentes frutas;
 	SDL_Texture* frutasTextures[3];
