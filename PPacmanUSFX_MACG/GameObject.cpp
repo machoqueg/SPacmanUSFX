@@ -7,6 +7,7 @@ GameObject::GameObject(int _posicionX, int _posicionY, int _ancho, int _alto, in
 	alto = _alto;
 	anchoPantalla = _anchoPantalla;
 	altoPantalla = _altoPantalla;
+	visible = true;
 }
 
 void GameObject::render() {};

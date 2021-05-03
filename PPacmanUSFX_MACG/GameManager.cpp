@@ -6,8 +6,13 @@ GameManager::GameManager() {
 	gWindow = nullptr;
 	gRenderer = nullptr;
 	gScreenSurface = nullptr;
-	//gPacManSurface = nullptr;
 	gPacmanTexture = nullptr;
+	gMonedaTexture = nullptr;
+
+	for (int i = 0; i <= 3; i++)
+	{
+		gFrutasTextures[i] = nullptr;
+	}
 
 	juego_en_ejecucion = true;
 }
@@ -18,11 +23,23 @@ int GameManager::onExecute() {
     }
 
 	pacman = new Pacman(gRenderer, gPacmanTexture, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT, 5);
-	//fantasma = new Fantasma();
-	//fantasma = new Fantasma(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4, SCREEN_WIDTH, SCREEN_HEIGHT, 7);
 	fantasma = new Fantasma(gRenderer, gFantasmaTexture, 0, 0, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT, 5);
 	fruta = new Fruta(gRenderer, gFrutasTextures, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT);
 	
+	int posx = 0;
+	
+	for (int i = 0; i < 10; i++)
+	{
+		posx = i * 50;
+		monedas.push_back(new Moneda(gRenderer, gMonedaTexture, posx, 100, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT));
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		superMonedas.push_back(new Moneda(gRenderer, gSuperMonedaTexture, 50 + (i * 30), 50 + (i * 30), 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT));
+	}
+
+
 	srand(time(NULL));
 
     SDL_Event Event;
@@ -113,6 +130,19 @@ bool GameManager::onInit() {
 				cout << "Fallo en la carga de la textura de fantasma" << endl;
 				success = false;
 			}
+			gMonedaTexture = loadTexture("Resources/point.bmp");
+			if (gMonedaTexture == NULL)
+			{
+				cout << "Fallo en la carga de la textura" << endl;
+				success = false;
+			}
+
+			gSuperMonedaTexture = loadTexture("Resources/point2.bmp");
+			if (gSuperMonedaTexture == NULL)
+			{
+				cout << "Fallo en la carga de la textura" << endl;
+				success = false;
+			}
 
 			if ((gFrutasTextures[0] = loadTexture("Resources/fruta01.png")) == NULL) {
 				return false;
@@ -141,11 +171,25 @@ void GameManager::onEvent(SDL_Event* Event) {
 		juego_en_ejecucion = false;
 	}
 };
+
 void GameManager::onLoop() {};
+
 void GameManager::onRender() {
 	pacman->render();
 	fantasma->render();
 	fruta->render();
+
+	for (int i = 0; i < 10; i++)
+	{
+		monedas[i]->render();
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		superMonedas[i]->render();
+	}
+
+
 };
 
 void GameManager::onCleanup() {
