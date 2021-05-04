@@ -1,31 +1,31 @@
 #include "Texture.h"
 
-SDL_Renderer* Texture::renderer = NULL;
+SDL_Renderer* Texture::renderer = nullptr;
 
 Texture::Texture()
 {
-	texture = NULL;
+	texture = nullptr;
 	ancho = 0;
 	alto = 0;
 }
 
 Texture::~Texture()
 {
-	Free();
+	free();
 }
 
-bool Texture::LoadFromImage(std::string path, Uint8 r, Uint8 g, Uint8 b)
+bool Texture::loadFromImage(std::string path, Uint8 r, Uint8 g, Uint8 b)
 {
 	// Free the previous texture
-	Free();
+	free();
 
 	// Return if the renderer was not set
-	if (renderer == NULL)
+	if (renderer == nullptr)
 		return false;
 
 	// Load image to a surface
 	SDL_Surface* loadedSurface = SDL_LoadBMP(path.c_str());
-	if (loadedSurface == NULL) {
+	if (loadedSurface == nullptr) {
 		printf("Unable to load image %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
 		return false;
 	}
@@ -35,7 +35,7 @@ bool Texture::LoadFromImage(std::string path, Uint8 r, Uint8 g, Uint8 b)
 
 	// Create texture from the surface
 	texture = SDL_CreateTextureFromSurface(Texture::renderer, loadedSurface);
-	if (texture == NULL) {
+	if (texture == nullptr) {
 		printf("Unable to create texture from surface %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
 		return false;
 	}
@@ -50,10 +50,10 @@ bool Texture::LoadFromImage(std::string path, Uint8 r, Uint8 g, Uint8 b)
 	return true;
 }
 
-bool Texture::LoadFromRenderedText(TTF_Font* font, std::string text, SDL_Color textColor)
+bool Texture::loadFromRenderedText(TTF_Font* font, std::string text, SDL_Color textColor)
 {
 	// Free the previous texture
-	Free();
+	free();
 
 	// Return if the renderer was not set
 	if (renderer == NULL)
@@ -68,7 +68,7 @@ bool Texture::LoadFromRenderedText(TTF_Font* font, std::string text, SDL_Color t
 
 	// Create a texture from generated surface
 	texture = SDL_CreateTextureFromSurface(Texture::renderer, loadedSurface);
-	if (texture == NULL) {
+	if (texture == nullptr) {
 		printf("Unable to create texture from surface! SDL Error: %s\n", SDL_GetError());
 		return false;
 	}
@@ -99,22 +99,22 @@ void Texture::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* cent
 	SDL_RenderCopyEx(renderer, texture, clip, &renderQuad, angle, center, renderFlip);
 }
 
-void Texture::SetColor(Uint8 red, Uint8 green, Uint8 blue)
+void Texture::setColor(Uint8 red, Uint8 green, Uint8 blue)
 {
 	SDL_SetTextureColorMod(texture, red, green, blue);
 }
 
-void Texture::SetBlendMode(SDL_BlendMode blendMode)
+void Texture::setBlendMode(SDL_BlendMode blendMode)
 {
 	SDL_SetTextureBlendMode(texture, blendMode);
 }
 
-void Texture::SetAlpha(Uint8 alpha)
+void Texture::setAlpha(Uint8 alpha)
 {
 	SDL_SetTextureAlphaMod(texture, alpha);
 }
 
-void Texture::Free()
+void Texture::free()
 {
 	if (texture != NULL) {
 		// Free the texture and set its pointer to NULL
@@ -124,14 +124,4 @@ void Texture::Free()
 		ancho = 0;
 		alto = 0;
 	}
-}
-
-int Texture::getAncho()
-{
-	return ancho;
-}
-
-int Texture::getAlto()
-{
-	return alto;
 }

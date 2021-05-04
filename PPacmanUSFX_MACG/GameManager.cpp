@@ -28,7 +28,7 @@ int GameManager::onExecute() {
 	fruta = new Fruta(gRenderer, gFrutasTextures, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT);
 	*/
 	//actoresJuego.push_back(new Pacman(gRenderer, gPacmanTexture, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT, 5));
-	actoresJuego.push_back(new Fantasma(gRenderer, gFantasmaTexture, 0, 0, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT, 5));
+	actoresJuego.push_back(new Fantasma(fantasmaTexture, 0, 0, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT, 5));
 	actoresJuego.push_back(new Fruta(gRenderer, gFrutasTextures, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT));
 	
 	int posx = 0;
@@ -137,12 +137,17 @@ bool GameManager::onInit() {
 				cout << "Fallo en la carga de la textura de Pacman" << endl;
 				success = false;
 			}
-			gFantasmaTexture = loadTexture("Resources/Fantasma.bmp");
+			/*gFantasmaTexture = loadTexture("Resources/Fantasma.bmp");
 			if (gFantasmaTexture == NULL)
 			{
 				cout << "Fallo en la carga de la textura de fantasma" << endl;
 				success = false;
-			}
+			}*/
+			Texture::renderer = gRenderer;
+
+			fantasmaTexture = new Texture();
+			fantasmaTexture->loadFromImage("Resources/Blinky.bmp");
+
 			gMonedaTexture = loadTexture("Resources/point.bmp");
 			if (gMonedaTexture == NULL)
 			{
