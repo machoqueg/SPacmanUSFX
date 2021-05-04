@@ -14,7 +14,6 @@ GameObject(_posicionX, _posicionY, _ancho, _alto, _anchoPantalla, _altoPantalla)
 	pacmanTexture = _pacmanTexture;
 }
 
-
 void Pacman::handleEvent(SDL_Event& e)
 {
 	//Si se a presionado una tecla

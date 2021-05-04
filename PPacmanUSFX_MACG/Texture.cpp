@@ -24,7 +24,8 @@ bool Texture::loadFromImage(std::string path, Uint8 r, Uint8 g, Uint8 b)
 		return false;
 
 	// Load image to a surface
-	SDL_Surface* loadedSurface = SDL_LoadBMP(path.c_str());
+	//SDL_Surface* loadedSurface = SDL_LoadBMP(path.c_str());
+	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
 	if (loadedSurface == nullptr) {
 		printf("Unable to load image %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
 		return false;
@@ -116,10 +117,10 @@ void Texture::setAlpha(Uint8 alpha)
 
 void Texture::free()
 {
-	if (texture != NULL) {
+	if (texture != nullptr) {
 		// Free the texture and set its pointer to NULL
 		SDL_DestroyTexture(texture);
-		texture = NULL;
+		texture = nullptr;
 
 		ancho = 0;
 		alto = 0;

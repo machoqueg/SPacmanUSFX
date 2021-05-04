@@ -15,6 +15,19 @@ using namespace std;
 //	
 //}
 
+Fantasma::Fantasma(int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla, int _velocidadPatron) :
+	GameObject(_posicionX, _posicionY, _ancho, _alto, _anchoPantalla, _altoPantalla)
+{
+	// Inicializa propiedade de de pacman
+	velocidadX = 0;
+	velocidadY = 0;
+	numeroAnimacion = 0;
+	velocidadPatron = _velocidadPatron;
+	fantasmaTexture = new Texture();
+	fantasmaTexture->loadFromImage("Resources/Blinky.bmp");
+}
+
+
 Fantasma::Fantasma(Texture* _fantasmaTexture, int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla, int _velocidadPatron) :
 	GameObject(_posicionX, _posicionY, _ancho, _alto, _anchoPantalla, _altoPantalla)
 {

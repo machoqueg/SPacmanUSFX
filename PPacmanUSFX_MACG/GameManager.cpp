@@ -28,6 +28,7 @@ int GameManager::onExecute() {
 	fruta = new Fruta(gRenderer, gFrutasTextures, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT);
 	*/
 	//actoresJuego.push_back(new Pacman(gRenderer, gPacmanTexture, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT, 5));
+	actoresJuego.push_back(new Fantasma(220, 220, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT, 5));
 	actoresJuego.push_back(new Fantasma(fantasmaTexture, 0, 0, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT, 5));
 	actoresJuego.push_back(new Fruta(gRenderer, gFrutasTextures, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT));
 	
