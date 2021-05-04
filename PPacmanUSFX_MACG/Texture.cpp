@@ -1,12 +1,12 @@
 #include "Texture.h"
 
-SDL_Renderer* Texture::Renderer = NULL;
+SDL_Renderer* Texture::renderer = NULL;
 
 Texture::Texture()
 {
 	texture = NULL;
-	width = 0;
-	height = 0;
+	ancho = 0;
+	alto = 0;
 }
 
 Texture::~Texture()
@@ -20,7 +20,7 @@ bool Texture::LoadFromImage(std::string path, Uint8 r, Uint8 g, Uint8 b)
 	Free();
 
 	// Return if the renderer was not set
-	if (Renderer == NULL)
+	if (renderer == NULL)
 		return false;
 
 	// Load image to a surface
@@ -34,15 +34,15 @@ bool Texture::LoadFromImage(std::string path, Uint8 r, Uint8 g, Uint8 b)
 	SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, r, g, b));
 
 	// Create texture from the surface
-	texture = SDL_CreateTextureFromSurface(Texture::Renderer, loadedSurface);
+	texture = SDL_CreateTextureFromSurface(Texture::renderer, loadedSurface);
 	if (texture == NULL) {
 		printf("Unable to create texture from surface %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
 		return false;
 	}
 
 	// Set width and height of the texture
-	width = loadedSurface->w;
-	height = loadedSurface->h;
+	ancho = loadedSurface->w;
+	alto = loadedSurface->h;
 
 	// Free the surface
 	SDL_FreeSurface(loadedSurface);
@@ -56,7 +56,7 @@ bool Texture::LoadFromRenderedText(TTF_Font* font, std::string text, SDL_Color t
 	Free();
 
 	// Return if the renderer was not set
-	if (Renderer == NULL)
+	if (renderer == NULL)
 		return false;
 
 	// Render the text using SDL_ttf library
@@ -67,15 +67,15 @@ bool Texture::LoadFromRenderedText(TTF_Font* font, std::string text, SDL_Color t
 	}
 
 	// Create a texture from generated surface
-	texture = SDL_CreateTextureFromSurface(Texture::Renderer, loadedSurface);
+	texture = SDL_CreateTextureFromSurface(Texture::renderer, loadedSurface);
 	if (texture == NULL) {
 		printf("Unable to create texture from surface! SDL Error: %s\n", SDL_GetError());
 		return false;
 	}
 
 	// Set width and height of the texture
-	width = loadedSurface->w;
-	height = loadedSurface->h;
+	ancho = loadedSurface->w;
+	alto = loadedSurface->h;
 
 	// Free the surface
 	SDL_FreeSurface(loadedSurface);
@@ -83,20 +83,20 @@ bool Texture::LoadFromRenderedText(TTF_Font* font, std::string text, SDL_Color t
 	return true;
 }
 
-void Texture::Render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip renderFlip)
+void Texture::render(int x, int y, SDL_Rect* clip, double angle, SDL_Point* center, SDL_RendererFlip renderFlip)
 {
 	// Return if the renderer was not set
-	if (Renderer == NULL)
+	if (renderer == NULL)
 		return;
 
-	SDL_Rect renderQuad = { x, y, GetWidth(), GetHeight() };
+	SDL_Rect renderQuad = { x, y, getAncho(), getAlto() };
 
 	if (clip != NULL) {
 		renderQuad.w = clip->w;
 		renderQuad.h = clip->h;
 	}
 
-	SDL_RenderCopyEx(Renderer, texture, clip, &renderQuad, angle, center, renderFlip);
+	SDL_RenderCopyEx(renderer, texture, clip, &renderQuad, angle, center, renderFlip);
 }
 
 void Texture::SetColor(Uint8 red, Uint8 green, Uint8 blue)
@@ -121,17 +121,17 @@ void Texture::Free()
 		SDL_DestroyTexture(texture);
 		texture = NULL;
 
-		width = 0;
-		height = 0;
+		ancho = 0;
+		alto = 0;
 	}
 }
 
-int Texture::GetWidth()
+int Texture::getAncho()
 {
-	return width;
+	return ancho;
 }
 
-int Texture::GetHeight()
+int Texture::getAlto()
 {
-	return height;
+	return alto;
 }

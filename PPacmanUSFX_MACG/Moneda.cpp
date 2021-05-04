@@ -5,7 +5,7 @@ Moneda::Moneda(SDL_Renderer* _renderer, SDL_Texture* _monedaTexture, int _posici
 {
 	// Inicializa propiedade de de pacman
 	valor = 1;
-	poderMoneda = PODER_MONEDA_NINGUNO;
+	tipoPoderMoneda = PODER_MONEDA_NINGUNO;
 	tiempoPoderMoneda = 0;
 	renderer = _renderer;
 	monedaTexture = _monedaTexture;

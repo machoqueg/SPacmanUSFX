@@ -7,11 +7,18 @@
 
 class Texture
 {
+private:
+	// Textura actual
+	SDL_Texture* texture;
+
+	int ancho;
+	int alto;
+
 public:
 	// Static SDL_Renderer so we don't have to ask for it
 	// when creating the texture or when rendering
 	// TODO: Temporary solution, should be removed after implementation of Game class
-	static SDL_Renderer* Renderer;
+	static SDL_Renderer* renderer;
 
 	Texture();
 	~Texture();
@@ -23,7 +30,7 @@ public:
 	bool LoadFromRenderedText(TTF_Font* font, std::string text, SDL_Color textColor);
 
 	// Render the texture
-	void Render(int x, int y, SDL_Rect* clip = NULL, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip renderFlip = SDL_FLIP_NONE);
+	void render(int x, int y, SDL_Rect* clip = NULL, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip renderFlip = SDL_FLIP_NONE);
 
 	// Set color
 	void SetColor(Uint8 red, Uint8 green, Uint8 blue);
@@ -37,13 +44,6 @@ public:
 	// Free assets
 	void Free();
 
-	int GetWidth();
-	int GetHeight();
-
-private:
-	// Actual texture
-	SDL_Texture* texture;
-
-	int width;
-	int height;
+	int getAncho();
+	int getAlto();
 };
