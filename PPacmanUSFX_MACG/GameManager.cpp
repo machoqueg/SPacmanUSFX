@@ -9,6 +9,8 @@ GameManager::GameManager() {
 	gPacmanTexture = nullptr;
 	gMonedaTexture = nullptr;
 
+	pacmanTextura = nullptr;
+
 	/*for (int i = 0; i <= 3; i++)
 	{
 		gFrutasTextures[i] = nullptr;
@@ -22,7 +24,8 @@ int GameManager::onExecute() {
         return -1;
     }
 
-	pacman = new Pacman(gRenderer, gPacmanTexture, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT, 5);
+	//pacman = new Pacman(gRenderer, gPacmanTexture, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT, 5);
+	pacman = new Pacman(pacmanTextura, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT, 5);
 	cout << pacman->getIdObjeto() << endl;
 	/*fantasma = new Fantasma(gRenderer, gFantasmaTexture, 0, 0, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT,  5);
 	fruta = new Fruta(gRenderer, gFrutasTextures, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 25, 25, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -144,6 +147,9 @@ bool GameManager::onInit() {
 			}*/
 			Texture::renderer = gRenderer;
 
+			pacmanTextura = new Texture();
+			pacmanTextura->loadFromImage("Resources/PacMan.bmp");
+
 			fantasma1Texture = new Texture();
 			fantasma1Texture->loadFromImage("Resources/Blinky.bmp");
 			fantasma2Texture = new Texture();
@@ -181,6 +187,7 @@ void GameManager::onEvent(SDL_Event* Event) {
 void GameManager::onLoop() {};
 
 void GameManager::onRender() {
+	pacman->update();
 	pacman->render();
 	/*fantasma->render();
 	fruta->render();

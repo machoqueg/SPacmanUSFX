@@ -19,8 +19,7 @@ using namespace std;
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 60
-0;
+const int SCREEN_HEIGHT = 600;
 
 class GameManager
 {
@@ -44,6 +43,7 @@ private:
 	SDL_Texture* gMonedaTexture;
 	SDL_Texture* gSuperMonedaTexture;
 
+	Texture* pacmanTextura;
 	Texture* fantasma1Texture = nullptr;
 	Texture* fantasma2Texture = nullptr;
 
