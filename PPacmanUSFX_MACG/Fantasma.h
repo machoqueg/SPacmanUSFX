@@ -1,7 +1,11 @@
 #pragma once
+#include <iostream>
+#include <string>
 #include <SDL.h>
 #include"GameObject.h"
 #include "Texture.h"
+
+using namespace std;
 
 class Fantasma: public GameObject {
 private:
@@ -22,7 +26,9 @@ private:
 	// Renderizador de la ventana
 	Texture* fantasmaTexture = nullptr;
 
-	int numeroAnimacion;
+	int numeroFrame;
+	int contadorFrames;
+	const int framesMovimiento = 2;
 
 	//// Renderizador de la ventana
 	//SDL_Renderer* renderer = nullptr;
@@ -34,7 +40,7 @@ private:
 public:
 	//Constructores y destructores
 	//Fantasma(SDL_Renderer* _renderer, SDL_Texture* _fantasmaTexture, int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla, int _velocidadPatron);
-	Fantasma(int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla, int _velocidadPatron);
+	Fantasma(string path, int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla, int _velocidadPatron);
 	Fantasma(Texture* _fantasmaTexture, int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla, int _velocidadPatron);
 	//~Fantasma();
 
@@ -58,4 +64,7 @@ public:
 	void move();
 	// Renderizar imagen fantasma
 	void render() override;
+
+	// Actualizar datos fantasma
+	void update() override;
 };

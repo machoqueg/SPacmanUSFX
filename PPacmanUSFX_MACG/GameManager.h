@@ -18,8 +18,9 @@ using namespace std;
 
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 60
+0;
 
 class GameManager
 {
@@ -37,16 +38,18 @@ private:
 
     //The images we will load and show on the screen
 	SDL_Texture* gPacmanTexture;
-	SDL_Texture* gFantasmaTexture;
+	//SDL_Texture* gFantasmaTexture;
 	// SDL_Texture * gFrutasTextures[3];
 	vector<SDL_Texture*> gFrutasTextures;
 	SDL_Texture* gMonedaTexture;
 	SDL_Texture* gSuperMonedaTexture;
 
-	Texture* fantasmaTexture = nullptr;
+	Texture* fantasma1Texture = nullptr;
+	Texture* fantasma2Texture = nullptr;
 
 public:
 	Pacman* pacman;
+
 	//vector<Fantasma*> fantasma;
 	Fantasma* fantasma;
 	Fantasma* fantasma1;

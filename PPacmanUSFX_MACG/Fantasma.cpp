@@ -15,16 +15,19 @@ using namespace std;
 //	
 //}
 
-Fantasma::Fantasma(int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla, int _velocidadPatron) :
+Fantasma::Fantasma(string path, int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla, int _velocidadPatron) :
 	GameObject(_posicionX, _posicionY, _ancho, _alto, _anchoPantalla, _altoPantalla)
 {
 	// Inicializa propiedade de de pacman
-	velocidadX = 0;
-	velocidadY = 0;
-	numeroAnimacion = 0;
+	posicionXDestino = getPosicionX();
+	posicionYDestino = getPosicionY();
+	velocidadX = 1;
+	velocidadY = 1;
+	numeroFrame = 0;
+	contadorFrames = 0;
 	velocidadPatron = _velocidadPatron;
 	fantasmaTexture = new Texture();
-	fantasmaTexture->loadFromImage("Resources/Blinky.bmp");
+	fantasmaTexture->loadFromImage(path.c_str());
 }
 
 
@@ -32,74 +35,92 @@ Fantasma::Fantasma(Texture* _fantasmaTexture, int _posicionX, int _posicionY, in
 	GameObject(_posicionX, _posicionY, _ancho, _alto, _anchoPantalla, _altoPantalla)
 {
 	// Inicializa propiedade de de pacman
-	velocidadX = 0;
-	velocidadY = 0;
-	numeroAnimacion = 0;
+	posicionXDestino = getPosicionX();
+	posicionYDestino = getPosicionY();
+
+	velocidadX = 1;
+	velocidadY = 1;
+	numeroFrame = 0;
+	contadorFrames = 0;
 	velocidadPatron = _velocidadPatron;
 	fantasmaTexture = _fantasmaTexture;
 }
 void Fantasma::move()
 {
-	if (getPosicionX() >= posicionXDestino) {
-		if (getPosicionY() >= posicionYDestino) {
-
-			posicionXDestino = 1 + rand() % getAnchoPantalla();
-			posicionYDestino = 1 + rand() % getAltoPantalla();
-
-			if (getPosicionX ()> posicionXDestino) {
+	if (incrementoPosicionX > 0) {
+		if (getPosicionX() >= posicionXDestino || (getPosicionX() + getAncho()) >= getAnchoPantalla()) {
+			posicionXDestino = 1 + rand() % (getAnchoPantalla() - getAncho());
+			if (getPosicionX() > posicionXDestino) {
 				incrementoPosicionX = -1;
 			}
-			else
-			{
+			else {
+				incrementoPosicionX = 1;
+			}
+
+		}
+		else {
+			setPosicionX(getPosicionX() + incrementoPosicionX * velocidadX);
+		}
+	}
+	else {
+		if (getPosicionX() <= posicionXDestino || (getPosicionX() <= 0)) {
+			posicionXDestino = 1 + rand() % (getAnchoPantalla() - getAncho());
+			if (getPosicionX() > posicionXDestino) {
 				incrementoPosicionX = -1;
 			}
-
-
-			if (getPosicionY() > posicionXDestino) {
-				incrementoPosicionY = 1;
-			}
-			else
-			{
+			else {
 				incrementoPosicionX = 1;
 			}
 		}
 		else {
-			setPosicionY ( getPosicionY() + incrementoPosicionY);
-
-			// Mover el fantasma arriba o abajo
-			setPosicionY(getPosicionY ()+ velocidadY);
-
-			// Verificar si la posicion del fantasma no salio de los bordes superior e inferior
-			if ((getPosicionY() < 0) || (getPosicionY() + getAlto() > getAltoPantalla()))
-			{
-				// Mover fantasma atras
-				setPosicionY(getPosicionY()- velocidadY);
+			setPosicionX(getPosicionX() + incrementoPosicionX * velocidadX);
+		}
+	}
+	if (incrementoPosicionY > 0) {
+		if (getPosicionY() >= posicionYDestino || (getPosicionY() + getAlto()) >= getAltoPantalla()) {
+			posicionYDestino = 1 + rand() % (getAltoPantalla() - getAlto());
+			if (getPosicionY() > posicionYDestino) {
+				incrementoPosicionY = -1;
 			}
+			else {
+				incrementoPosicionY = 1;
+			}
+		}
+		else {
+			setPosicionY(getPosicionY() + incrementoPosicionY * velocidadY);
 		}
 	}
 	else {
-		setPosicionX (getPosicionX() + incrementoPosicionX);
-
-		// Mover el fantasma a la izquierda o derecha
-		setPosicionX(getPosicionX()+ velocidadX);
-
-		// Verificar si la posicion del fantasma no salio de los bordes izquierdo o derecho
-		if ((getPosicionX() < 0) || (getPosicionX() + getAncho() > getAnchoPantalla()))
-		{
-			// Mover fantasma atras
-			setPosicionX(getPosicionX() - velocidadX);
+		if (getPosicionY() <= posicionYDestino || (getPosicionY() <= 0)) {
+			posicionYDestino = 1 + rand() % (getAltoPantalla() - getAlto());
+			if (getPosicionY() > posicionYDestino) {
+				incrementoPosicionY = -1;
+			}
+			else {
+				incrementoPosicionY = 1;
+			}
+		}
+		else {
+			setPosicionY(getPosicionY() + incrementoPosicionY * velocidadY);
 		}
 	}
 }
 void Fantasma::render()
 {
-	numeroAnimacion++;
-	if (numeroAnimacion >= 4)
-		numeroAnimacion = 0;
-
-	SDL_Rect renderQuad = { 25 * numeroAnimacion, 0, getAncho(), getAlto() };
+	
+	SDL_Rect renderQuad = { 25 * numeroFrame, 25, getAncho(), getAlto() };
 
 	//Render to screen
 	fantasmaTexture->render(getPosicionX(), getPosicionY(), &renderQuad);
 	//SDL_RenderCopyEx(renderer, fantasmaTexture, NULL, &renderQuad, 0.0, NULL, SDL_FLIP_NONE);
+}
+
+void Fantasma::update() {
+	contadorFrames++;
+	numeroFrame = contadorFrames / 8;
+
+	if (numeroFrame > framesMovimiento - 1) {
+		numeroFrame = 0;
+		contadorFrames = 0;
+	}
 }
