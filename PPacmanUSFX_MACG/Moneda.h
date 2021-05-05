@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include "GameObject.h"
+#include "Texture.h"
 
 enum PODER_MONEDA {
 	PODER_MONEDA_NINGUNO,
@@ -18,15 +19,11 @@ private:
 	int valor;
 	PODER_MONEDA tipoPoderMoneda;
 	int tiempoPoderMoneda;
-public:
-	// Renderizador de la ventana
-	SDL_Renderer* renderer = nullptr;
 
-	// Textura de la grafica del fantasma
-	SDL_Texture* monedaTexture = nullptr;
+	Texture* monedaTexture;
 
 public:
-	Moneda(SDL_Renderer* _renderer, SDL_Texture* _fantasmaTexture, int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla);
+	Moneda(Texture* _monedaTexture, int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla);
 
 	int getValor() { return valor; }
 	PODER_MONEDA getTipoPoderMoneda() { return tipoPoderMoneda; }
