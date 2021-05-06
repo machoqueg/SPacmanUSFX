@@ -7,6 +7,7 @@ class Pila
 {
 private:
 	T* Datos;
+	//U* Datos2;
 	int Cima;
 	const int numeroElementos;
 public:
@@ -15,7 +16,7 @@ public:
 		Cima = -1;
 	}
 	~Pila() { delete[] Datos; }
-	void Insertar(T c);
+	void Insertar(T elementoInsertar);
 	T Sacar();
 	bool Vacia();
 	bool Llena();

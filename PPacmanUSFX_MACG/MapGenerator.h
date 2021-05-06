@@ -10,7 +10,7 @@
 #include "Fantasma.h"
 #include "Pacman.h"
 #include "Fruta.h"
-
+#include "Pared.h"
 
 using namespace std;
 
@@ -25,7 +25,7 @@ private:
 	const string pathFantasma3 = "Resources/Inkey.bmp";
 	const string pathFantasma4 = "Resources/Pinky.bmp";
 	const string pathFruta = "Resources/Frutas.png";
-	const string pathMoneda = "Resources/Monedas.png";
+	const string pathMoneda = "Resources/Monedas02.jpg";
 	const string pathSuperMoneda = "Resources/Monedas03.jpg";
 	const string pathPared = "Resources/wall.bmp";
 
