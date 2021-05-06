@@ -22,27 +22,13 @@ private:
 	// Velocidad a la que mueve el fantasma en cualquier eje
 	int velocidadPatron;
 
-	Texture* textura;
-
-	int numeroFrame;
-	int contadorFrames;
-	const int framesMovimiento = 2;
-
 	int posicionXEnTextura;
 	int posicionYEnTextura;
 
 public:
-	//// Renderizador de la ventana
-	//SDL_Renderer* renderer = nullptr;
-
-	//// Textura grafica de pacman;
-	//SDL_Texture* pacmanTexture = nullptr;
-
-	
-public:
 	//Constructores y destructores
 	//Pacman(SDL_Renderer* _renderer, SDL_Texture* _pacmanTexture, int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla, int _velocidadPatron);
-	Pacman(Texture* _textura, int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla, int _velocidadPatron);
+	Pacman(Texture* _texturaPacman, int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla, int _velocidadPatron);
 
 	//~Pacman();
 
@@ -67,8 +53,8 @@ public:
 	// Mover pacman
 	void move();
 	// Renderizar imagen pacman
-	void render();
-	void update();
+	//void render();
+	//void update();
 
 };
 

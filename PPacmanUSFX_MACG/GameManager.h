@@ -33,39 +33,14 @@ private:
     //The window renderer
     SDL_Renderer* gRenderer;
 
-    //The surface contained by the window
-    SDL_Surface* gScreenSurface;
-
-    //The images we will load and show on the screen
-	//SDL_Texture* gPacmanTexture;
-	//SDL_Texture* gFantasmaTexture;
-	// SDL_Texture * gFrutasTextures[3];
-	/*vector<SDL_Texture*> gFrutasTextures;
-	SDL_Texture* gMonedaTexture;
-	SDL_Texture* gSuperMonedaTexture;*/
-
-	/*Texture* pacmanTextura;
-	Texture* fantasma1Texture = nullptr;
-	Texture* fantasma2Texture = nullptr;*/
-
 public:
-	Pacman* pacman;
-
-	//vector<Fantasma*> fantasma;
-	Fantasma* fantasma;
-	Fantasma* fantasma1;
-	Fruta* fruta;
-	vector<Moneda*> monedas;
-	vector<Moneda*> superMonedas;
 	vector<GameObject*> actoresJuego;
 	MapGenerator* generadorNivelJuego;
 
 public:
     GameManager();
-    int onExecute();
-    
+    int onExecute();  
     bool onInit();
-
     void onEvent(SDL_Event* Event);
     void onLoop();
     void onRender();

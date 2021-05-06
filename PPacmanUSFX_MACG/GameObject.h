@@ -27,15 +27,20 @@ protected:
 	// Si el objeto es visible
 	bool visible;
 	bool eliminar;
+	
+	// Textura para representacion grafica del objeto
+	Texture* textura;
 
-	Texture* texturaObjeto;
+	int numeroFrame;
+	int contadorFrames;
+	int framesMovimiento;
 
 public:
 	static int numeroObjetosCreados;
 
 public:
 	//Constructores y destructores
-	GameObject(int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla);
+	GameObject(Texture* _textura, int _posicionX, int _posicionY, int _ancho, int _alto, int _anchoPantalla, int _altoPantalla);
 
 	//Metodos accesores
 	int getIdObjeto() { return idObjeto; }
@@ -56,11 +61,12 @@ public:
 	void setVisible(bool _visible) { visible = _visible; }
 
 	// Metodos varios
+	void setParametrosAnimacion(int _framesMovimiento) { framesMovimiento = _framesMovimiento; }
 
 	// Renderizar imagen
-	virtual void render();	
+	virtual void render();
+	virtual void update();
 	virtual void move() {};
-	virtual void update() { /*No se hace nada*/ };
 	virtual void mostrar() {};
 	virtual void handleEvent(SDL_Event& e) {};
 };

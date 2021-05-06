@@ -58,17 +58,20 @@ bool MapGenerator::load(string path)
 				break;
 			case '.':
 				newObject = new Moneda(monedaTexture, x * 25, y * 25, 25, 25, anchoPantalla, altoPantalla);
+				newObject->setParametrosAnimacion(6);
 				break;
 			case 'p':
 				newObject = new Pacman(pacmanTexture, x * 25, y * 25, 25, 25, anchoPantalla, altoPantalla, 5);
+				newObject->setParametrosAnimacion(2);
 				break;
 			case 'b':
 				newObject = new Fantasma(fantasma1Texture, x * 25, y * 25, 25, 25, anchoPantalla, altoPantalla, 3);
+				newObject->setParametrosAnimacion(4);
 				break;
 			}
 
 			// If the object was created, add it to the vector
-			if (newObject != NULL)
+			if (newObject != nullptr)
 				vectorObjetosJuego.push_back(newObject);
 		}
 
@@ -81,7 +84,7 @@ bool MapGenerator::load(string path)
 	return true;
 }
 
-void MapGenerator::populate(std::vector<GameObject*>& _vectorObjetosJuegoGM)
+void MapGenerator::populate(std::vector<GameObject*> &_vectorObjetosJuegoGM)
 {
 	for (unsigned int i = 0; i < vectorObjetosJuego.size(); i++) {
 		_vectorObjetosJuegoGM.push_back(vectorObjetosJuego[i]);
