@@ -54,7 +54,7 @@ bool MapGenerator::load(string path)
 			switch (chars[x])
 			{
 			case 'x':
-				//newObject = new Wall(tile, pTextureManager->Get("wall"));
+				//newObject = new Pared(paredTexture, x * 25, y * 25, 25, 25, anchoPantalla, altoPantalla);
 				break;
 			case '.':
 				newObject = new Moneda(monedaTexture, x * 25, y * 25, 25, 25, anchoPantalla, altoPantalla);

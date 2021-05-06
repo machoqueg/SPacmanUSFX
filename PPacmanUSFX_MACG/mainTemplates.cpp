@@ -4,7 +4,7 @@
 using namespace std;
 
 template <class T>
-void ImprimirArreglo(T* arreglo, int numeroElementos) {
+void ImprimirArreglo(const T* arreglo, int numeroElementos) {
 	for (int i = 0; i < numeroElementos; i++) {
 		cout << arreglo[i] << " ";
 	}

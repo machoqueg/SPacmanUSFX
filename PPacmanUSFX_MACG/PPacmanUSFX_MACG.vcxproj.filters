@@ -24,9 +24,6 @@
     <ClCompile Include="Fruta.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -42,10 +39,13 @@
     <ClCompile Include="MapGenerator.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="mainTemplates.cpp">
+    <ClCompile Include="Pila.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Pila.cpp">
+    <ClCompile Include="Pared.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,6 +75,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Pila.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Pared.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
