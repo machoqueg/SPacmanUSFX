@@ -132,13 +132,14 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="mainTemplates.cpp" />
     <ClCompile Include="MapGenerator.cpp" />
     <ClCompile Include="Moneda.cpp" />
     <ClCompile Include="Pacman.cpp" />
     <ClCompile Include="Pared.cpp" />
     <ClCompile Include="Pila.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="TileGraph.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fantasma.h" />
@@ -151,6 +152,8 @@
     <ClInclude Include="Pared.h" />
     <ClInclude Include="Pila.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="Tile.h" />
+    <ClInclude Include="TileGraph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
