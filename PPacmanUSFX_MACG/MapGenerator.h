@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include<vector>
+#include<list>
 #include<string>
 #include <fstream>
 
@@ -19,6 +20,7 @@ class MapGenerator
 private:
 	vector<GameObject*> vectorObjetosJuego;
 
+	list<GameObject*> listaObjetosJuego;
 	const string pathPacman = "Resources/PacMan.bmp";
 	const string pathFantasma1 = "Resources/Blinky.bmp";
 	const string pathFantasma2 = "Resources/Clyde.bmp";
