@@ -12,15 +12,17 @@
 #include "Pacman.h"
 #include "Fruta.h"
 #include "Pared.h"
+#include "Tile.h"
+#include "TileGraph.h"
+
 
 using namespace std;
-
 class MapGenerator
 {
 private:
 	vector<GameObject*> vectorObjetosJuego;
+	TileGraph* tileGraph;
 
-	list<GameObject*> listaObjetosJuego;
 	const string pathPacman = "Resources/PacMan.bmp";
 	const string pathFantasma1 = "Resources/Blinky.bmp";
 	const string pathFantasma2 = "Resources/Clyde.bmp";
@@ -30,7 +32,6 @@ private:
 	const string pathMoneda = "Resources/Monedas02.jpg";
 	const string pathSuperMoneda = "Resources/Monedas03.jpg";
 	const string pathPared = "Resources/wall.bmp";
-
 	Texture* pacmanTexture;
 	Texture* fantasma1Texture;
 	Texture* fantasma2Texture;
@@ -40,15 +41,13 @@ private:
 	Texture* monedaTexture;
 	Texture* superMonedaTexture;
 	Texture* paredTexture;
-
 	int anchoPantalla;
 	int altoPantalla;
-public:
-	MapGenerator(int _anchoPantalla, int _altoPantalla);
+public:;
+	MapGenerator(TileGraph* _tileGraph, int _anchoPantalla, int _altoPantalla);
 
 	// carga el archivo con el mapa del nivel y todos los objetos
 	bool load(string path);
-
 	// carga los objetos generados por la clase MapGeneratos a un array de punteros a objetos GameObject*
 	void populate(vector<GameObject*> &_vectorObjetosJuegoGM);
 };

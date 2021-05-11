@@ -58,7 +58,7 @@ void Pacman::handleEvent(SDL_Event& e)
 	//move();
 }
 
-void Pacman::move()
+void Pacman::update()
 {
 	// Mueve pacman a la izquierda o a la derecha
 	posicionX += velocidadX;

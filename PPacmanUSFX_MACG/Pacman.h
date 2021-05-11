@@ -51,7 +51,7 @@ public:
 	// Manejador de eventos de pacman
 	void handleEvent(SDL_Event& e);
 	// Mover pacman
-	void move();
+	void update();
 	// Renderizar imagen pacman
 	//void render();
 	//void update();

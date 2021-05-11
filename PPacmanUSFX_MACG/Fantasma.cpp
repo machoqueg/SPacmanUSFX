@@ -29,7 +29,7 @@ Fantasma::Fantasma(Texture* _fantasmaTexture, int _posicionX, int _posicionY, in
 	velocidadY = 1;
 	velocidadPatron = _velocidadPatron;
 }
-void Fantasma::move()
+void Fantasma::update()
 {
 	if (incrementoPosicionX > 0) {
 		if (getPosicionX() >= posicionXDestino || (getPosicionX() + getAncho()) >= getAnchoPantalla()) {

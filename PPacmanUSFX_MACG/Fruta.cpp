@@ -19,7 +19,7 @@ Fruta::Fruta(Texture* _frutaTextura, int _posicionX, int _posicionY,
 	int numeroFrutaVisible = 0;
 }
 
-void Fruta::mostrar()
+void Fruta::update()
 {
 	if (contadorTiempoVisible >= tiempoVisible) {
 		visible = false;

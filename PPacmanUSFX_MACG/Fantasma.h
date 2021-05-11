@@ -46,7 +46,7 @@ public:
 	//void handleEvent(SDL_Event& e);
 
 	// Mover fantasma
-	void move();
+	void update();
 	// Renderizar imagen fantasma
 	//void render() override;
 

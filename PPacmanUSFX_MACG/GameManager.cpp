@@ -13,9 +13,11 @@ int GameManager::onExecute() {
         return -1;
     }
 
-	srand(time(NULL));
+	srand(time(nullptr));
 
-	generadorNivelJuego = new MapGenerator(SCREEN_WIDTH, SCREEN_HEIGHT);
+	TileGraph tileGraphGM(20, 15);
+
+	generadorNivelJuego = new MapGenerator(&tileGraphGM, SCREEN_WIDTH, SCREEN_HEIGHT);
 	generadorNivelJuego->load("Resources/mapa.txt");
 	generadorNivelJuego->populate(actoresJuego);
 
@@ -30,11 +32,6 @@ int GameManager::onExecute() {
 			}
         }
 		
-		for (int i = 0; i < actoresJuego.size(); i++) {
-			actoresJuego[i]->move();
-			actoresJuego[i]->mostrar();
-		}
-
 		//Clear screen
 		SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
 		SDL_RenderClear(gRenderer);
