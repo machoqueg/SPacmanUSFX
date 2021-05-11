@@ -16,7 +16,8 @@ private:
 	Moneda* moneda;
 	Pared* pared;
 
-	SDL_Point posicion;
+	int posicionX;
+	int posicionY;
 
 public:
 	static const int anchoTile = 25;
@@ -31,15 +32,16 @@ public:
 	Fruta* getFruta() { return fruta; }
 	Moneda* getMoneda() { return moneda; }
 	Pared* getPared() { return pared; }
-	SDL_Point getPosicion() { return posicion; }
+	int getPosicionX() { return posicionX; }
+	int getPosicionY() { return posicionY; }
 
 	void setPacman(Pacman* _pacman) { pacman = _pacman; }
 	void setFantasma(Fantasma* _fantasma) { fantasma = _fantasma; }
 	void setFruta(Fruta* _fruta){ fruta = _fruta; }
 	void setMoneda(Moneda* _moneda) { moneda = moneda; }
 	void setPared(Pared* _pared) { pared = _pared; }
-	void setPosicion(SDL_Point _posicion) { posicion = _posicion; }
-	void setPosicion(int _x, int _y);
+	void setPosicionX(int _posicionX) { posicionX = _posicionX; }
+	void setPosicionY(int _posicionY) { posicionY = _posicionY; }
 
 };
 
